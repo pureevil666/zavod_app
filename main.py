@@ -1,5 +1,6 @@
-from PyQt5 import QtWidgets
-from PyQt5.QtWidgets import QApplication, QMainWindow
+from PyQt5 import QtWidgets, QtCore
+from PyQt5.QtCore import Qt
+from PyQt5.QtWidgets import QApplication, QMainWindow, QWidget
 import sys
 
 WINDOW_WIDTH = 600
@@ -30,8 +31,32 @@ class Window(QMainWindow):
 
     def press_button(self):
         input_text = self.input_area.toPlainText()
-
+        self.show_result()
         print(input_text)
+
+    def show_result(self):
+        self.result = Result()
+        self.result.show()
+
+
+class Result(QWidget):
+    def __init__(self):
+        super(Result, self).__init__()
+
+        self.result_width = round(WINDOW_WIDTH * 0.6)
+        self.result_height = round(WINDOW_HEIGHT * 0.3)
+        self.setWindowFlags(QtCore.Qt.FramelessWindowHint)
+        self.setMinimumWidth(self.result_width)
+        self.setMinimumHeight(self.result_height)
+
+        self.label = QtWidgets.QLabel(self)
+        self.label.setText('Результат')
+        self.label.setMinimumWidth(self.result_width - 5)
+        self.label.setAlignment(Qt.AlignCenter)
+
+        self.close_button = QtWidgets.QPushButton()
+
+        self.label.show()
 
 
 def application():
