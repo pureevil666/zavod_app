@@ -1,4 +1,5 @@
 from PyQt5 import QtWidgets, QtCore
+from PyQt5.QtGui import QFont
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QApplication, QMainWindow, QWidget
 import sys
@@ -17,6 +18,7 @@ class Window(QMainWindow):
         self.input_area = QtWidgets.QPlainTextEdit(self)
         self.input_area.setFixedWidth(WINDOW_WIDTH)
         self.input_area.setFixedHeight(WINDOW_HEIGHT)
+        self.input_area.setFont(QFont('Times', 10))
         self.input_area.setStyleSheet("QPlainTextEdit { color: White; background-color: #191919;}")
 
         self.button_width = WINDOW_WIDTH - 30
@@ -60,15 +62,18 @@ class Result(QWidget):
         self.label.setText('Результат')
         self.label.setMinimumWidth(self.result_width - 5)
         self.label.setAlignment(Qt.AlignCenter)
+        self.label.move(0, 10)
+        self.label.setFont(QFont('Arial', 16))
         self.label.show()
 
         self.close_button_width = self.result_width - 10
-        self.close_button_height = 30
+        self.close_button_height = 40
         self.close_button = QtWidgets.QPushButton(self)
         self.close_button.setText("Закрыть")
         self.close_button.clicked.connect(self.close_result)
         self.close_button.setFixedWidth(self.close_button_width)
         self.close_button.setFixedHeight(self.close_button_height)
+        self.close_button.setFont(QFont('Arial', 12))
         self.close_button.move(self.result_width - self.close_button_width - 5,
                                self.result_height - self.close_button_height - 5)
         self.close_button.show()
