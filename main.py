@@ -33,6 +33,7 @@ class Window(QMainWindow):
 
         print(input_text)
 
+
 def application():
     app = QApplication(sys.argv)
     window = Window()
