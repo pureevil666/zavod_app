@@ -53,10 +53,21 @@ class Result(QWidget):
         self.label.setText('Результат')
         self.label.setMinimumWidth(self.result_width - 5)
         self.label.setAlignment(Qt.AlignCenter)
-
-        self.close_button = QtWidgets.QPushButton()
-
         self.label.show()
+
+        self.close_button_width = self.result_width - 10
+        self.close_button_height = 30
+        self.close_button = QtWidgets.QPushButton(self)
+        self.close_button.setText("Закрыть")
+        self.close_button.clicked.connect(self.close_result)
+        self.close_button.setFixedWidth(self.close_button_width)
+        self.close_button.setFixedHeight(self.close_button_height)
+        self.close_button.move(self.result_width - self.close_button_width - 5,
+                               self.result_height - self.close_button_height - 5)
+        self.close_button.show()
+
+    def close_result(self):
+        self.close()
 
 
 def application():
