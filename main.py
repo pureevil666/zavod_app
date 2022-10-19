@@ -5,6 +5,7 @@ import sys
 
 WINDOW_WIDTH = 600
 WINDOW_HEIGHT = 800
+window = None
 
 
 class Window(QMainWindow):
@@ -38,15 +39,23 @@ class Window(QMainWindow):
         self.result = Result()
         self.result.show()
 
+    def disable_window(self, value):
+        self.input_area.setReadOnly(value)
+        self.button.setDisabled(value)
+
 
 class Result(QWidget):
     def __init__(self):
         super(Result, self).__init__()
 
+        window.disable_window(True)
+
+
         self.result_width = round(WINDOW_WIDTH * 0.6)
         self.result_height = round(WINDOW_HEIGHT * 0.3)
         self.setWindowFlags(QtCore.Qt.FramelessWindowHint)
         self.setMinimumWidth(self.result_width)
+        self.move(WINDOW_WIDTH+round(self.result_width/2), WINDOW_HEIGHT-round(self.result_height*1.7))
         self.setMinimumHeight(self.result_height)
 
         self.label = QtWidgets.QLabel(self)
@@ -67,10 +76,12 @@ class Result(QWidget):
         self.close_button.show()
 
     def close_result(self):
+        global window
         self.close()
-
+        window.disable_window(False)
 
 def application():
+    global window
     app = QApplication(sys.argv)
     window = Window()
     window.show()
