@@ -49,13 +49,11 @@ class Result(QWidget):
         super(Result, self).__init__()
 
         window.disable_window(True)
-
-
         self.result_width = round(WINDOW_WIDTH * 0.6)
         self.result_height = round(WINDOW_HEIGHT * 0.3)
-        self.setWindowFlags(QtCore.Qt.FramelessWindowHint)
+        self.setWindowFlags(QtCore.Qt.FramelessWindowHint | Qt.WindowStaysOnTopHint)
         self.setMinimumWidth(self.result_width)
-        self.move(WINDOW_WIDTH+round(self.result_width/2), WINDOW_HEIGHT-round(self.result_height*1.7))
+        self.move(WINDOW_WIDTH + round(self.result_width / 2), WINDOW_HEIGHT - round(self.result_height * 1.7))
         self.setMinimumHeight(self.result_height)
 
         self.label = QtWidgets.QLabel(self)
@@ -79,6 +77,7 @@ class Result(QWidget):
         global window
         self.close()
         window.disable_window(False)
+
 
 def application():
     global window
