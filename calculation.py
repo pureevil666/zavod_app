@@ -1,4 +1,4 @@
-LETTERS = 'абвгдеёжзийклмнопрстуфхцчшщъыьэюя-'
+LETTERS = 'абвгдеёжзийклмнопрстуфхцчшщъыьэюя- ()'
 LETTERS = LETTERS + LETTERS.upper()
 group_dict = {}
 overall_score = 0
