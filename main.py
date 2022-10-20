@@ -66,7 +66,7 @@ class Result(QWidget):
         self.label.setFont(QFont('Arial', 16))
 
         self.result_label = QtWidgets.QLabel(self)
-        self.result_label.setText(self.result_text())
+        self.result_label.setText(calculation.label)
         self.result_label.setMinimumWidth(self.result_width - 5)
         self.result_label.setMargin(100)
         self.result_label.move(0, -50)
@@ -89,14 +89,6 @@ class Result(QWidget):
         self.close_button.setFont(QFont('Arial', 12))
         self.close_button.move(self.result_width - self.close_button_width - 5,
                                self.result_height - self.close_button_height - 5)
-
-    @staticmethod
-    def result_text():
-        text = '1'
-        #
-        #
-        #
-        return text
 
     def close_result(self):
         global window

@@ -2,6 +2,8 @@ LETTERS = 'абвгдеёжзийклмнопрстуфхцчшщъыьэюя-'
 LETTERS = LETTERS + LETTERS.upper()
 group_dict = {}
 overall_score = 0
+label = ''
+
 
 def give_data(data):
     input_text = data
@@ -48,6 +50,7 @@ def make_final_dict(group_dict):
     for group in group_dict:
         group_dict[group] = count_result(group_dict[group])
     count_overall_score(group_dict)
+    create_label(group_dict)
 
 
 def count_result(item_list):
@@ -57,7 +60,14 @@ def count_result(item_list):
         buffer_count += int(buffer_list[1])
     return buffer_count
 
+
 def count_overall_score(group_dict):
     global overall_score
     for group in group_dict:
         overall_score += int(group_dict[group])
+
+
+def create_label(group_dict):
+    global label
+    for group in group_dict:
+        label += f'{group}: {group_dict[group]}\n'
