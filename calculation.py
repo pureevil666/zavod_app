@@ -83,7 +83,7 @@ def check_value(value):
         new_string += i
     print(new_string)
     # ---------------------------ЕСЛИ РАЗМЕР ЧИСЛОВОЙ
-    if new_string[0].isdigit():
+    if new_string[0].isdigit() and new_string[1].isdigit():
         new_string = new_string[2:]
         print(new_string)
         for char in new_string:
@@ -91,3 +91,15 @@ def check_value(value):
                 output_string += char
             else:
                 return int(output_string)
+    # -----------------------------ЕСЛИ РАЗМЕР БУКВЕННЫЙ
+    else:
+        for i in range(0, len(new_string)):
+            if i == 0 and new_string[i].isdigit():
+                continue
+            if new_string[i].isdigit():
+                output_string += new_string[i]
+            elif len(output_string) > 0:
+                return int(output_string)
+            else:
+                continue
+        return int(output_string)
