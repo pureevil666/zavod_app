@@ -68,9 +68,16 @@ class Result(QWidget):
         self.result_label = QtWidgets.QLabel(self)
         self.result_label.setText(self.result_text())
         self.result_label.setMinimumWidth(self.result_width - 5)
-        self.result_label.setAlignment(Qt.AlignCenter)
-        self.result_label.move(0, 50)
+        self.result_label.setMargin(100)
+        self.result_label.move(0, -50)
         self.result_label.setFont(QFont('Arial', 12))
+
+        self.overall_score_label = QtWidgets.QLabel(self)
+        self.overall_score_label.setText(f'Общее: {self.overall_score()}')
+        self.overall_score_label.setAlignment(Qt.AlignCenter)
+        self.overall_score_label.setMinimumWidth(self.result_width - 5)
+        self.overall_score_label.move(0, self.result_height - 75)
+        self.overall_score_label.setFont(QFont('Arial', 16))
 
         self.close_button_width = self.result_width - 10
         self.close_button_height = 40
@@ -87,6 +94,11 @@ class Result(QWidget):
     def result_text():
         text = '1241\n123\n123124\n124124\n1241241'
         return text
+
+    @staticmethod
+    def overall_score():
+        score = '1231'
+        return score
 
     def close_result(self):
         global window
