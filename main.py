@@ -3,10 +3,10 @@ from PyQt5.QtGui import QFont
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QApplication, QMainWindow, QWidget
 import sys
+import calculation
 
 WINDOW_WIDTH = 600
 WINDOW_HEIGHT = 800
-window = None
 
 
 class Window(QMainWindow):
@@ -35,7 +35,6 @@ class Window(QMainWindow):
     def press_button(self):
         input_text = self.input_area.toPlainText()
         self.show_result()
-        print(input_text)
 
     def show_result(self):
         self.result = Result()
@@ -92,19 +91,22 @@ class Result(QWidget):
 
     @staticmethod
     def result_text():
-        text = '1241\n123\n123124\n124124\n1241241'
+        calculation.give_data(window.input_area.toPlainText())
+        text = '1'
+        #
+        #
+        #
         return text
 
     @staticmethod
     def overall_score():
-        score = '1231'
+        score = 0
         return score
 
     def close_result(self):
         global window
         self.close()
         window.disable_window(False)
-
 
 def application():
     global window
