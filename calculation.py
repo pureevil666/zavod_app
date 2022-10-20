@@ -11,7 +11,12 @@ def give_data(data):
 
 
 def convert_data_to_list(data):
-    data_list = data.splitlines()
+    data_list = []
+    data_list += data.splitlines()
+    for i in range(0, 5):
+        while ' ' * i in data_list:
+            data_list.remove(' ' * i)
+
     create_groups(data_list)
 
 
