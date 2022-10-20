@@ -57,9 +57,10 @@ def count_result(item_list):
     buffer_count = 0
     for el in item_list:
         buffer_list = el.split(' ')
-        if not buffer_list[1].isdigit():
-            check_value(buffer_list)
-        buffer_count += int(buffer_list[1])
+        if len(buffer_list) == 1 or not buffer_list[1].isdigit():
+            buffer_count += check_value(buffer_list)
+        else:
+            buffer_count += int(buffer_list[1])
     return buffer_count
 
 
@@ -74,5 +75,19 @@ def create_label(group_dict):
     for group in group_dict:
         label += f'{group}: {group_dict[group]}\n'
 
+
 def check_value(value):
-    print(value)
+    new_string = ''
+    output_string = ''
+    for i in value:
+        new_string += i
+    print(new_string)
+    # ---------------------------ЕСЛИ РАЗМЕР ЧИСЛОВОЙ
+    if new_string[0].isdigit():
+        new_string = new_string[2:]
+        print(new_string)
+        for char in new_string:
+            if char.isdigit():
+                output_string += char
+            else:
+                return int(output_string)
