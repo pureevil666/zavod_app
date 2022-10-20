@@ -51,6 +51,7 @@ def make_final_dict(group_dict):
         group_dict[group] = count_result(group_dict[group])
     count_overall_score(group_dict)
     create_label(group_dict)
+    group_dict.clear()
 
 
 def count_result(item_list):
