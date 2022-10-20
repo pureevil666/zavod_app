@@ -57,6 +57,8 @@ def count_result(item_list):
     buffer_count = 0
     for el in item_list:
         buffer_list = el.split(' ')
+        if not buffer_list[1].isdigit():
+            check_value(buffer_list)
         buffer_count += int(buffer_list[1])
     return buffer_count
 
@@ -71,3 +73,6 @@ def create_label(group_dict):
     global label
     for group in group_dict:
         label += f'{group}: {group_dict[group]}\n'
+
+def check_value(value):
+    print(value)

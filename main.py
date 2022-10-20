@@ -20,7 +20,8 @@ class Window(QMainWindow):
         self.input_area.setFixedWidth(WINDOW_WIDTH)
         self.input_area.setFixedHeight(WINDOW_HEIGHT - 70)
         self.input_area.setFont(QFont('Times', 10))
-        self.input_area.setStyleSheet("QPlainTextEdit { color: White; background-color: #191919; padding: 5px 20px;}")
+        self.input_area.setStyleSheet("QPlainTextEdit { color: White; background-color: #191919; "
+                                      "padding: 5px 0px 5px 10px;}")
 
         self.button_width = WINDOW_WIDTH
         self.button_height = 70
@@ -68,8 +69,8 @@ class Result(QWidget):
         self.result_label = QtWidgets.QLabel(self)
         self.result_label.setText(calculation.label)
         self.result_label.setMinimumWidth(self.result_width - 5)
-        self.result_label.setMargin(100)
-        self.result_label.move(0, -50)
+        self.result_label.setMargin(120)
+        self.result_label.move(0, -75)
         self.result_label.setFont(QFont('Arial', 12))
 
         self.overall_score_label = QtWidgets.QLabel(self)
