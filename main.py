@@ -64,7 +64,13 @@ class Result(QWidget):
         self.label.setAlignment(Qt.AlignCenter)
         self.label.move(0, 10)
         self.label.setFont(QFont('Arial', 16))
-        self.label.show()
+
+        self.result_label = QtWidgets.QLabel(self)
+        self.result_label.setText(self.result_text())
+        self.result_label.setMinimumWidth(self.result_width - 5)
+        self.result_label.setAlignment(Qt.AlignCenter)
+        self.result_label.move(0, 50)
+        self.result_label.setFont(QFont('Arial', 12))
 
         self.close_button_width = self.result_width - 10
         self.close_button_height = 40
@@ -76,7 +82,11 @@ class Result(QWidget):
         self.close_button.setFont(QFont('Arial', 12))
         self.close_button.move(self.result_width - self.close_button_width - 5,
                                self.result_height - self.close_button_height - 5)
-        self.close_button.show()
+
+    @staticmethod
+    def result_text():
+        text = '1241\n123\n123124\n124124\n1241241'
+        return text
 
     def close_result(self):
         global window
