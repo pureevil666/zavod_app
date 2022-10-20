@@ -34,7 +34,7 @@ class Window(QMainWindow):
         self.button.clicked.connect(self.press_button)
 
     def press_button(self):
-        input_text = self.input_area.toPlainText()
+        calculation.give_data(window.input_area.toPlainText())
         self.show_result()
 
     def show_result(self):
@@ -92,7 +92,6 @@ class Result(QWidget):
 
     @staticmethod
     def result_text():
-        calculation.give_data(window.input_area.toPlainText())
         text = '1'
         #
         #
