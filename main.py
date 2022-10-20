@@ -73,7 +73,7 @@ class Result(QWidget):
         self.result_label.setFont(QFont('Arial', 12))
 
         self.overall_score_label = QtWidgets.QLabel(self)
-        self.overall_score_label.setText(f'Общее: {self.overall_score()}')
+        self.overall_score_label.setText(f'Общее: {calculation.overall_score}')
         self.overall_score_label.setAlignment(Qt.AlignCenter)
         self.overall_score_label.setMinimumWidth(self.result_width - 5)
         self.overall_score_label.move(0, self.result_height - 75)
@@ -97,11 +97,6 @@ class Result(QWidget):
         #
         #
         return text
-
-    @staticmethod
-    def overall_score():
-        score = 0
-        return score
 
     def close_result(self):
         global window

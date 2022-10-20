@@ -1,7 +1,7 @@
 LETTERS = 'абвгдеёжзийклмнопрстуфхцчшщъыьэюя-'
 LETTERS = LETTERS + LETTERS.upper()
 group_dict = {}
-
+overall_score = 0
 
 def give_data(data):
     input_text = data
@@ -47,7 +47,7 @@ def split_list(index_list, group_dict, input_list, group_list):
 def make_final_dict(group_dict):
     for group in group_dict:
         group_dict[group] = count_result(group_dict[group])
-    print(group_dict)
+    count_overall_score(group_dict)
 
 
 def count_result(item_list):
@@ -56,3 +56,8 @@ def count_result(item_list):
         buffer_list = el.split(' ')
         buffer_count += int(buffer_list[1])
     return buffer_count
+
+def count_overall_score(group_dict):
+    global overall_score
+    for group in group_dict:
+        overall_score += int(group_dict[group])
