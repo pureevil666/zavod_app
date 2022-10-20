@@ -66,12 +66,16 @@ def count_result(item_list):
 
 def count_overall_score(group_dict):
     global overall_score
+    if overall_score > 0:
+        overall_score = 0
     for group in group_dict:
         overall_score += int(group_dict[group])
 
 
 def create_label(group_dict):
     global label
+    if len(label) > 0:
+        label = ''
     for group in group_dict:
         label += f'{group}: {group_dict[group]}\n'
 
