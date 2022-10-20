@@ -41,8 +41,18 @@ def split_list(index_list, group_dict, input_list, group_list):
         else:
             saved_list = input_list[start + 1:]
         group_dict[group_list[i]] = saved_list
-    print(input_list)
+    make_final_dict(group_dict)
+
+
+def make_final_dict(group_dict):
+    for group in group_dict:
+        group_dict[group] = count_result(group_dict[group])
     print(group_dict)
-    print(index_list)
-    print(group_list)
-    print(group_dict)
+
+
+def count_result(item_list):
+    buffer_count = 0
+    for el in item_list:
+        buffer_list = el.split(' ')
+        buffer_count += int(buffer_list[1])
+    return buffer_count
