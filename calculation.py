@@ -12,5 +12,3 @@ def convert_data_to_list(data):
     global data_list
     data_list = data.splitlines()
     print(data_list)
-
-

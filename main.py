@@ -14,22 +14,23 @@ class Window(QMainWindow):
         super(Window, self).__init__()
         self.setWindowTitle("Завод")
         self.setGeometry(650, 150, WINDOW_WIDTH, WINDOW_HEIGHT)
+        self.setStyleSheet("Window {background-color: #191919;}")
 
         self.input_area = QtWidgets.QPlainTextEdit(self)
         self.input_area.setFixedWidth(WINDOW_WIDTH)
-        self.input_area.setFixedHeight(WINDOW_HEIGHT)
+        self.input_area.setFixedHeight(WINDOW_HEIGHT - 70)
         self.input_area.setFont(QFont('Times', 10))
-        self.input_area.setStyleSheet("QPlainTextEdit { color: White; background-color: #191919;}")
+        self.input_area.setStyleSheet("QPlainTextEdit { color: White; background-color: #191919; padding: 5px 20px;}")
 
-        self.button_width = WINDOW_WIDTH - 30
-        self.button_height = 50
+        self.button_width = WINDOW_WIDTH
+        self.button_height = 70
         self.button = QtWidgets.QPushButton(self)
         self.button.setText("Посчитать")
         self.button.setFixedWidth(self.button_width)
         self.button.setFixedHeight(self.button_height)
         self.button.setStyleSheet("QPushButton {font-size: 25px; font-weight: bold; "
                                   "color: White; background-color: #404040;}")
-        self.button.move(WINDOW_WIDTH - self.button_width - 15, WINDOW_HEIGHT - self.button_height - 15)
+        self.button.move(WINDOW_WIDTH - self.button_width, WINDOW_HEIGHT - self.button_height)
         self.button.clicked.connect(self.press_button)
 
     def press_button(self):
@@ -107,6 +108,7 @@ class Result(QWidget):
         global window
         self.close()
         window.disable_window(False)
+
 
 def application():
     global window
